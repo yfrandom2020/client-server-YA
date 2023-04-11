@@ -1,0 +1,44 @@
+rfc - Chat Room App Commands and Expected Input/Output
+this document will describe the available commands and the expected input and output
+
+required modules:
+import sys
+import os
+import time
+import socket
+import select
+from scapy.all import *
+import threading
+import _thread
+import random
+
+1.Join a Session
+Input: Clicking the join button
+Output: None. The chat menu window. is replaced with the chat room window.
+users can join existing rooms by clicking on them. by clicking they send a join request with the room number in it. The server acknoledges the request (sends a "join successful") message and appends the connectio to the array of the room
+
+
+2.Create a Session
+Input: Clicking the create button
+Output: None. The chat menu window. is replaced with the chat room window.
+Users can create their own room by clicking the "create" button. This prompts a create request to the server. The server acknoledges the request and creates a new array with the client connection to the array of rooms.
+
+3.Close connection
+Input: /close command in the chat room
+Output: None. The chat room window is deleted and the client re-enters the chat menu.
+users can leave a chat room by using the /close command. The server acknoledges the request and removes and client connection from the room he is in which returns him to the main menu.
+
+4. echo [text]: echo the provided text back to the user.
+Input: A string of text to be echoed back to the user.
+Output: A message displaying the echoed text.
+
+5. quit: close connection for all clients and the server. The server sends a "close quit" message to each client, specifying that the close request is caused by a user quitting.
+Input: password
+Output: None
+The client can decide he doesn't want to quit, in which case he types "go back".
+
+6. Log as admin
+A client can log in as an admin and view log of each room.
+Input: password (string)
+Output: The server sends the log of each room
+once a client logs in as admin, a new window is being opened for him but he still needs to enter a room.
